@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 23:38:53 by user42            #+#    #+#             */
-/*   Updated: 2022/01/26 23:44:41 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/03 16:22:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void take_forks(t_rules *rules, t_philosopher *philo)
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(&(rules->forks[philo->left_f]));
-		action_print(rules, philo->id, "\e[34mhas taken a fork\e[39m");
+		write_actions(rules, philo->id, "\e[34mhas taken a fork\e[39m");
 		pthread_mutex_lock(&(rules->forks[philo->right_f]));
-		action_print(rules, philo->id, "\e[34mhas taken a fork\e[39m");
+		write_actions(rules, philo->id, "\e[34mhas taken a fork\e[39m");
 	}
 	else
 	{
 		pthread_mutex_lock(&(rules->forks[philo->right_f]));
-		action_print(rules, philo->id, "\e[34mhas taken a fork\e[39m");
+		write_actions(rules, philo->id, "\e[34mhas taken a fork\e[39m");
 		pthread_mutex_lock(&(rules->forks[philo->left_f]));
-		action_print(rules, philo->id, "\e[34mhas taken a fork\e[39m");
+		write_actions(rules, philo->id, "\e[34mhas taken a fork\e[39m");
 	}
 }
 
@@ -47,7 +47,7 @@ void free_forks(t_rules *rules, t_philosopher *philo)
 void philo_is_eating(t_rules *rules, t_philosopher *philo)
 {
 	pthread_mutex_lock(&(rules->meal_check));
-	action_print(rules, philo->id, "\e[35mis eating\e[39m");
+	write_actions(rules, philo->id, "\e[35mis eating\e[39m");
 	philo->t_last_meal = timestamp();
 	pthread_mutex_unlock(&(rules->meal_check));
 	smart_sleep(rules->time_eat, rules);
@@ -66,9 +66,9 @@ void	philo_eats(t_philosopher *philo)
 
 void	ft_sleep_and_think(t_rules *rules, t_philosopher *philo)
 {
-	action_print(rules, philo->id, "\e[93mis sleeping\e[39m");
+	write_actions(rules, philo->id, "\e[93mis sleeping\e[39m");
 	smart_sleep(rules->time_sleep, rules);
-	action_print(rules, philo->id, "\e[32mis thinking\e[39m");
+	write_actions(rules, philo->id, "\e[32mis thinking\e[39m");
 }
 
 void	*routine(void *void_philosopher)
@@ -130,7 +130,7 @@ void	death_checker(t_rules *r, t_philosopher *p)
 			pthread_mutex_lock(&(r->meal_check));
 			if (time_diff(p[i].t_last_meal, timestamp()) > r->time_death)
 			{
-				action_print(r, i, "\e[1m\e[91mdied\e[0m\e[39m");
+				write_actions(r, i, "\e[1m\e[91mdied\e[0m\e[39m");
 				r->dieded = 1;
 			}
 			pthread_mutex_unlock(&(r->meal_check));

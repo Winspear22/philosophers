@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:12:53 by user42            #+#    #+#             */
-/*   Updated: 2022/01/26 00:44:14 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/03 16:12:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int ft_check_argv(char **argv)
     check.time_sleep = ft_atoi(argv[4]);
     check.nb_eat = 0;
     if (check.nb_philo < 1 || check.nb_philo > 200 || check.time_death <= 0 || check.time_eat <= 0
-		|| check.time_sleep <= 0 || check.nb_eat < 0)
+		|| check.time_sleep <= 0)
     {
-            ft_error_write(&check);
+            ft_error_write_5_args(&check);
             return (0);
     }
     return (1);
@@ -73,7 +73,7 @@ int ft_check_argv_2(char **argv)
     if (check.nb_philo < 1 || check.nb_philo > 200 || check.time_death <= 0 || check.time_eat <= 0
 		|| check.time_sleep <= 0 || check.nb_eat <= 0)
     {
-            ft_error_write(&check);
+            ft_error_write_6_args(&check);
             return (0);
     }
     return (1);
@@ -81,24 +81,22 @@ int ft_check_argv_2(char **argv)
 
 int ft_check_all(char **argv, int argc)
 {
-    int i;
-    int j;
-    int k;
+    t_checker checker;
 
-    i = -1;
-    j = -1;
-    k = -1;
-    i = ft_check_nb_argv(argv, argc);
-    if (i == 0)
+    checker.i = -1;
+    checker.j = -1;
+    checker.k = -1;
+    checker.i = ft_check_nb_argv(argv, argc);
+    if (checker.i == 0)
         return (0);
-    j = ft_check_alpha(argv);
-    if (j == 0)
+    checker.j = ft_check_alpha(argv);
+    if (checker.j == 0)
         return (0);
     if (argc == 5)
-        k = ft_check_argv(argv);
+        checker.k = ft_check_argv(argv);
     else if (argc == 6)
-        k = ft_check_argv_2(argv);
-    if (k == 0)
+        checker.k = ft_check_argv_2(argv);
+    if (checker.k == 0)
         return (0);
     return (1);
 }

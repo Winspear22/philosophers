@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 21:24:20 by user42            #+#    #+#             */
-/*   Updated: 2022/01/25 21:51:21 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/03 16:22:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <pthread.h>
+
+typedef struct s_checker
+{
+	int i;
+	int j;
+	int k;
+}				t_checker;
 
 typedef struct s_philosopher
 {
@@ -57,9 +64,9 @@ int     ft_is_not_minus(char **argv);
 int     ft_check_all(char **argv, int argc);
 
 /*      FT_WRITE_ERRORS     */
-void    ft_error_write(t_rules *check);
-void	action_print(t_rules *rules, int id, char *string);
-
+void    ft_error_write_5_args(t_rules *check);
+void    ft_error_write_6_args(t_rules *check);
+void	write_actions(t_rules *rules, int id, char *string);
 
 /*      FT_INIT_ALL     */
 t_rules ft_init_all(t_rules *i, char **argv);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 21:24:20 by user42            #+#    #+#             */
-/*   Updated: 2022/02/03 16:22:56 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/03 21:24:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,29 @@ typedef struct s_checker
 typedef struct s_philosopher
 {
 	int					id;
-	int					x_ate;
-	int					left_f;
-	int					right_f;
-	long int			t_last_meal;
+	long int			latest_meal; 
+	int					nb_ate; 
 	struct s_rules		*rules;
+	int					left_f; 
+	int					right_f;
 	pthread_t			thread_id;
 }               t_philosopher;
 
 typedef struct			s_rules
 {
-	int					nb_philo;
-	int					time_death;
-	int					time_eat;
-	int					time_sleep;
-	int					nb_eat;
-	int					dieded;
-	int					all_ate;
-	long int			first_timestamp;
-    pthread_mutex_t		meal_check;
-	pthread_mutex_t		forks[250];
+	int					philo_nb; 
+	int					time_to_die; 
+	int					time_to_eat; 
+	int					time_to_sleep; 
+	int					eating_time_nb; 
+	int					have_all_eaten; 
+	long int			first_ft_get_time;
+	int					died; 
 	pthread_mutex_t		print_message;
-	t_philosopher		philosophers[250];
+	pthread_mutex_t		forks[200]; 
+	t_philosopher		philosophers[200];
+	pthread_mutex_t		meal_check; 
+
 }                       t_rules;
 
 /*      FT_UTIL_CMD     */
@@ -75,8 +76,17 @@ t_rules ft_init_all(t_rules *i, char **argv);
 int		ft_philosophers(t_rules *rules);
 
 /*		FT_TIME_CALCULATOR		*/
-long int	timestamp(void);
-long long	time_diff(long long past, long long pres);
+long int	ft_get_time(void);
+long long	ft_time_difference(long long present, long long past);
 void		smart_sleep(long long time, t_rules *rules);
+
+/*		FT_PHILOS_ROUTINE		*/
+void	ft_sleep_and_think(t_rules *rules, t_philosopher *philo);
+void	philo_eats(t_philosopher *philo);
+void	philo_is_eating(t_rules *rules, t_philosopher *philo);
+void	free_forks(t_rules *rules, t_philosopher *philo);
+void	take_forks(t_rules *rules, t_philosopher *philo);
+
+
 
 # endif

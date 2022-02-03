@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 11:36:32 by user42            #+#    #+#             */
-/*   Updated: 2022/01/25 21:51:12 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/03 21:09:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int ft_init_all_mutex(t_rules *philo)
 {
     int i;
 
-    i = philo->nb_philo;
+    i = philo->philo_nb;
     if (pthread_mutex_init(&(philo->print_message), NULL))
 		return (1);
     if (pthread_mutex_init(&(philo->meal_check), NULL))
@@ -34,23 +34,23 @@ t_rules ft_init_all(t_rules *i, char **argv)
 {
     int k;
 
-    i->nb_philo = ft_atoi(argv[1]);
-    k = i->nb_philo;
-    i->time_death = ft_atoi(argv[2]);
-    i->time_eat = ft_atoi(argv[3]);
-    i->time_sleep = ft_atoi(argv[4]);
-    i->nb_eat = 0;
+    i->philo_nb = ft_atoi(argv[1]);
+    k = i->philo_nb;
+    i->time_to_die = ft_atoi(argv[2]);
+    i->time_to_eat = ft_atoi(argv[3]);
+    i->time_to_sleep = ft_atoi(argv[4]);
+    i->eating_time_nb = 0;
     if (argv[5])
-        i->nb_eat = ft_atoi(argv[5]);
+        i->eating_time_nb = ft_atoi(argv[5]);
     else 
-        i->nb_eat = -1;
+        i->eating_time_nb = -1;
     while (--k >= 0)
     {
         i->philosophers[k].id = k;
-        i->philosophers[k].x_ate = 0;
+        i->philosophers[k].nb_ate = 0;
 		i->philosophers[k].left_f = k;
-		i->philosophers[k].right_f = (k + 1) % i->nb_philo;
-        i->philosophers[k].t_last_meal = 0;
+		i->philosophers[k].right_f = (k + 1) % i->philo_nb;
+        i->philosophers[k].latest_meal = 0;
         i->philosophers[k].rules = i;
     }
     ft_init_all_mutex(i);

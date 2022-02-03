@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:12:53 by user42            #+#    #+#             */
-/*   Updated: 2022/02/03 16:12:45 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/03 21:07:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int ft_check_argv(char **argv)
 {
     t_rules check;
 
-    check.nb_philo = ft_atoi(argv[1]);
-    check.time_death = ft_atoi(argv[2]);
-    check.time_eat = ft_atoi(argv[3]);
-    check.time_sleep = ft_atoi(argv[4]);
-    check.nb_eat = 0;
-    if (check.nb_philo < 1 || check.nb_philo > 200 || check.time_death <= 0 || check.time_eat <= 0
-		|| check.time_sleep <= 0)
+    check.philo_nb = ft_atoi(argv[1]);
+    check.time_to_die = ft_atoi(argv[2]);
+    check.time_to_eat = ft_atoi(argv[3]);
+    check.time_to_sleep = ft_atoi(argv[4]);
+    check.eating_time_nb = 0;
+    if (check.philo_nb < 1 || check.philo_nb > 200 || check.time_to_die <= 0 || check.time_to_eat <= 0
+		|| check.time_to_sleep <= 0)
     {
             ft_error_write_5_args(&check);
             return (0);
@@ -65,13 +65,13 @@ int ft_check_argv_2(char **argv)
 {
     t_rules check;
 
-    check.nb_philo = ft_atoi(argv[1]);
-    check.time_death = ft_atoi(argv[2]);
-    check.time_eat = ft_atoi(argv[3]);
-    check.time_sleep = ft_atoi(argv[4]);
-    check.nb_eat = ft_atoi(argv[5]);
-    if (check.nb_philo < 1 || check.nb_philo > 200 || check.time_death <= 0 || check.time_eat <= 0
-		|| check.time_sleep <= 0 || check.nb_eat <= 0)
+    check.philo_nb = ft_atoi(argv[1]);
+    check.time_to_die = ft_atoi(argv[2]);
+    check.time_to_eat = ft_atoi(argv[3]);
+    check.time_to_sleep = ft_atoi(argv[4]);
+    check.eating_time_nb = ft_atoi(argv[5]);
+    if (check.philo_nb < 1 || check.philo_nb > 200 || check.time_to_die <= 0 || check.time_to_eat <= 0
+		|| check.time_to_sleep <= 0 || check.eating_time_nb <= 0)
     {
             ft_error_write_6_args(&check);
             return (0);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:51:43 by user42            #+#    #+#             */
-/*   Updated: 2022/01/25 17:40:41 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/03 21:08:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int     ft_exit(char *str)
     return (0);
 }
 
-long int	timestamp(void)
+long int	ft_get_time(void)
 {
 	struct timeval	t;
 	long long		time;
@@ -31,19 +31,22 @@ long int	timestamp(void)
 	return (time);
 }
 
-long long	time_diff(long long past, long long pres)
+long long	ft_time_difference(long long present, long long past)
 {
-	return (pres - past);
+	int i;
+
+	i = present - past;
+	return (i);
 }
 
 void		smart_sleep(long long time, t_rules *rules)
 {
 	long long i;
 
-	i = timestamp();
-	while (!(rules->dieded))
+	i = ft_get_time();
+	while (!(rules->died))
 	{
-		if (time_diff(i, timestamp()) >= time)
+		if (ft_time_difference(ft_get_time(), i) >= time)
 			break ;
 		usleep(50);
 	}

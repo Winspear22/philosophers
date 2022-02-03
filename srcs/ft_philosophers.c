@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 23:38:53 by user42            #+#    #+#             */
-/*   Updated: 2022/01/26 01:01:24 by user42           ###   ########.fr       */
+/*   Updated: 2022/01/26 23:44:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,7 @@ void	*routine(void *void_philosopher)
 	{
 		philo_eats(philo);
 		if (rules->all_ate)
-		{
-			printf("Every philosophers ate %d times.\n", rules->nb_eat);
 			break ;
-		}
 		ft_sleep_and_think(rules, philo);
 		i++;
 	}

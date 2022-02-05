@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:50:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/05 22:56:59 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/05 23:25:07 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ t_rules	ft_init_all(t_rules *i, char **argv)
 	i->time_to_die = ft_atoi(argv[2]);
 	i->time_to_eat = ft_atoi(argv[3]);
 	i->time_to_sleep = ft_atoi(argv[4]);
-	i->eating_time_nb = 0;
+	i->nb_eat = 0;
 	if (argv[5])
-		i->eating_time_nb = ft_atoi(argv[5]);
+		i->nb_eat = ft_atoi(argv[5]);
 	else
-		i->eating_time_nb = -1;
+		i->nb_eat = -1;
 	while (--k >= 0)
 	{
 		i->philosophers[k].id = k;

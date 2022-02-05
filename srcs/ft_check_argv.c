@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:50:57 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/05 22:51:01 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/05 23:25:07 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_check_argv(char **argv)
 	check.time_to_die = ft_atoi(argv[2]);
 	check.time_to_eat = ft_atoi(argv[3]);
 	check.time_to_sleep = ft_atoi(argv[4]);
-	check.eating_time_nb = 0;
+	check.nb_eat = 0;
 	if (check.philo_nb < 1 || check.philo_nb > 200
 		|| check.time_to_die <= 0 || check.time_to_eat <= 0
 		|| check.time_to_sleep <= 0)
@@ -71,10 +71,10 @@ int	ft_check_argv_2(char **argv)
 	check.time_to_die = ft_atoi(argv[2]);
 	check.time_to_eat = ft_atoi(argv[3]);
 	check.time_to_sleep = ft_atoi(argv[4]);
-	check.eating_time_nb = ft_atoi(argv[5]);
+	check.nb_eat = ft_atoi(argv[5]);
 	if (check.philo_nb < 1 || check.philo_nb > 200
 		|| check.time_to_die <= 0 || check.time_to_eat <= 0
-		|| check.time_to_sleep <= 0 || check.eating_time_nb <= 0)
+		|| check.time_to_sleep <= 0 || check.nb_eat <= 0)
 	{
 		ft_error_write_6_args(&check);
 		return (0);

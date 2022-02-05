@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:50:43 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/05 23:04:52 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/05 23:25:07 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_is_ph_dead(t_philosopher *p, t_rules *r)
 		if (r->died)
 			break ;
 		i = 0;
-		while (r->eating_time_nb != -1 && i < r->philo_nb && p[i].nb_ate >= r->eating_time_nb)
+		while (r->nb_eat != -1 && i < r->philo_nb && p[i].nb_ate >= r->nb_eat)
 			i++;
 		if (i == r->philo_nb)
 			r->have_all_eaten = 1;
@@ -108,7 +108,7 @@ int	ft_philosophers(t_rules *r)
 	if (r->have_all_eaten == 1)
 	{
 		usleep(1500);
-		printf("\e[93mAll philos ate %d, no death !", r->eating_time_nb);
+		printf("\e[93mAll philos ate %d, no death !", r->nb_eat);
 		printf("\e[1m SUCCESS !\n");
 	}
 	return (0);

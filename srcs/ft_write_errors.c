@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:51:24 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/05 23:13:56 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/02/05 23:25:07 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void	ft_error_write_6_args(t_rules *check)
 		printf("\e[91mError, the time to die cannot be <= 0.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->time_to_die);
 	}
-	if (check->eating_time_nb <= 0)
+	if (check->nb_eat <= 0)
 	{
 		printf("\e[91mError, the number of time to eat cannot be < 0.\n");
-		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->eating_time_nb);
+		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->nb_eat);
 	}
 }
 

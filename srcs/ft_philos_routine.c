@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philos_routine.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 20:32:36 by user42            #+#    #+#             */
-/*   Updated: 2022/02/03 21:09:40 by user42           ###   ########.fr       */
+/*   Created: 2022/02/05 22:50:18 by adaloui           #+#    #+#             */
+/*   Updated: 2022/02/05 23:08:09 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void take_forks(t_rules *rules, t_philosopher *philo)
+void	take_forks(t_rules *rules, t_philosopher *philo)
 {
 	if (philo->id % 2 == 0)
 	{
@@ -30,7 +30,7 @@ void take_forks(t_rules *rules, t_philosopher *philo)
 	}
 }
 
-void free_forks(t_rules *rules, t_philosopher *philo)
+void	free_forks(t_rules *rules, t_philosopher *philo)
 {
 	if (philo->id % 2 == 0)
 	{
@@ -44,7 +44,7 @@ void free_forks(t_rules *rules, t_philosopher *philo)
 	}
 }
 
-void philo_is_eating(t_rules *rules, t_philosopher *philo)
+void	philo_is_eating(t_rules *rules, t_philosopher *philo)
 {
 	pthread_mutex_lock(&(rules->meal_check));
 	write_actions(rules, philo->id, "\e[35mis eating\e[39m");
@@ -56,7 +56,7 @@ void philo_is_eating(t_rules *rules, t_philosopher *philo)
 
 void	philo_eats(t_philosopher *philo)
 {
-	t_rules *rules;
+	t_rules	*rules;
 
 	rules = philo->rules;
 	take_forks(rules, philo);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philosophers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 23:38:53 by user42            #+#    #+#             */
-/*   Updated: 2022/02/03 21:09:40 by user42           ###   ########.fr       */
+/*   Created: 2022/02/05 22:50:43 by adaloui           #+#    #+#             */
+/*   Updated: 2022/02/05 23:04:52 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	*routine(void *void_philosopher)
 
 void	exit_launcher(t_rules *rules, t_philosopher *philos)
 {
-	int i;
-	
+	int	i;
+
 	if (rules->philo_nb == 1)
 		i = 1;
 	else
@@ -61,7 +61,7 @@ void	exit_launcher(t_rules *rules, t_philosopher *philos)
 
 void	ft_is_ph_dead(t_philosopher *p, t_rules *r)
 {
-	int i;
+	int	i;
 
 	while (!(r->have_all_eaten))
 	{
@@ -69,7 +69,8 @@ void	ft_is_ph_dead(t_philosopher *p, t_rules *r)
 		while (++i < r->philo_nb && !(r->died))
 		{
 			pthread_mutex_lock(&(r->meal_check));
-			if (ft_time_difference(ft_get_time(), p[i].latest_meal) > r->time_to_die)
+			if (ft_time_difference(ft_get_time(), p[i].latest_meal)
+				> r->time_to_die)
 			{
 				write_actions(r, i, "\e[1m\e[91mdied\e[0m\e[39m");
 				r->died = 1;
@@ -87,27 +88,28 @@ void	ft_is_ph_dead(t_philosopher *p, t_rules *r)
 	}
 }
 
-int    ft_philosophers(t_rules *rules)
+int	ft_philosophers(t_rules *r)
 {
-    int				i;
+	int				i;
 	t_philosopher	*ph;
 
 	i = 0;
-	ph = rules->philosophers;
-	rules->first_ft_get_time = ft_get_time();
-    while (i < rules->philo_nb)
+	ph = r->philosophers;
+	r->first_ft_get_time = ft_get_time();
+	while (i < r->philo_nb)
 	{
 		if (pthread_create(&(ph[i].thread_id), NULL, &routine, &(ph[i])))
 			return (1);
 		ph[i].latest_meal = ft_get_time();
 		i++;
 	}
-	ft_is_ph_dead(rules->philosophers, rules);
-	exit_launcher(rules, ph);
-	if (rules->have_all_eaten == 1)
+	ft_is_ph_dead(r->philosophers, r);
+	exit_launcher(r, ph);
+	if (r->have_all_eaten == 1)
 	{
 		usleep(1500);
-		printf("\e[93mAll philosophers ate %d times without dying ! \e[1mSUCCESS !\n", rules->eating_time_nb);
+		printf("\e[93mAll philos ate %d, no death !", r->eating_time_nb);
+		printf("\e[1m SUCCESS !\n");
 	}
 	return (0);
 }

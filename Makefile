@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 21:23:14 by user42            #+#    #+#              #
-#    Updated: 2022/02/03 17:12:13 by user42           ###   ########.fr        #
+#    Updated: 2022/02/05 23:03:38 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ endif
 
 OBJ = *.o
 
-FLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=thread
+FLAGS = -Wall -Wextra -Werror -pthread
 
 WHITE ='\033[0m'
 WHITE_2 = \033[0m
@@ -32,6 +32,7 @@ BLUE ='\033[36m'
 CYAN ='\033[1;32m'
 YELLOW = \e[93m
 RED = \e[31m
+
 
 all: $(NAME)
 

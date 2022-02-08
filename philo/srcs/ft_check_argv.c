@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:50:57 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/07 17:16:50 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/08 07:24:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	ft_check_argv(char **argv)
 	check.time_to_sleep = ft_atoi(argv[4]);
 	check.nb_eat = 0;
 	if (check.philo_nb < 1 || check.philo_nb > 200
-		|| check.time_to_die <= 0 || check.time_to_die > 2147483647
-		|| check.time_to_eat <= 0 || check.time_to_eat > 2147483647
-		|| check.time_to_sleep <= 0 || check.time_to_sleep > 2147483647)
+		|| check.time_to_die <= 59 || check.time_to_die > 2147483647
+		|| check.time_to_eat <= 59 || check.time_to_eat > 2147483647
+		|| check.time_to_sleep <= 59 || check.time_to_sleep > 2147483647)
 	{
 		ft_error_write_5_args(&check);
 		return (0);
@@ -74,9 +74,9 @@ int	ft_check_argv_2(char **argv)
 	check.time_to_sleep = ft_atoi(argv[4]);
 	check.nb_eat = ft_atoi(argv[5]);
 	if (check.philo_nb < 1 || check.philo_nb > 200
-		|| check.time_to_die <= 0 || check.time_to_die > 2147483647
-		|| check.time_to_eat <= 0 || check.time_to_eat > 2147483647
-		|| check.time_to_sleep <= 0 || check.time_to_sleep > 2147483647
+		|| check.time_to_die <= 59 || check.time_to_die > 2147483647
+		|| check.time_to_eat <= 59 || check.time_to_eat > 2147483647
+		|| check.time_to_sleep <= 59 || check.time_to_sleep > 2147483647
 		|| check.nb_eat <= 0 || check.nb_eat > 2147483647)
 	{
 		ft_error_write_6_args(&check);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:51:24 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/07 13:39:17 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/08 07:28:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void	ft_error_write_5_args(t_rules *check)
 		printf("\e[91mError, you need a number of philosopher < 1 or > 200.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->philo_nb);
 	}
-	if (check->time_to_sleep <= 0)
+	if (check->time_to_sleep <= 59)
 	{
-		printf("\e[91mError, the time to sleep cannot be < 0.\n");
+		printf("\e[91mError, the time to sleep cannot be < 60 ms.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->time_to_sleep);
 	}
-	if (check->time_to_eat <= 0)
+	if (check->time_to_eat <= 59)
 	{
-		printf("\e[91mError, the time to eat cannot be < 0.\n");
+		printf("\e[91mError, the time to eat cannot be < 60 ms.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->time_to_eat);
 	}
-	if (check->time_to_die <= 0)
+	if (check->time_to_die <= 59)
 	{
-		printf("\e[91mError, the time to die cannot be <= 0.\n");
+		printf("\e[91mError, the time to die cannot be < 60 ms.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->time_to_die);
 	}
 }
@@ -43,19 +43,19 @@ void	ft_error_write_6_args(t_rules *check)
 		printf("\e[91mError, you need a number of philosopher < 1 or > 200.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->philo_nb);
 	}
-	if (check->time_to_sleep <= 0)
+	if (check->time_to_sleep <= 59)
 	{
-		printf("\e[91mError, the time to sleep cannot be < 0.\n");
+		printf("\e[91mError, the time to sleep cannot be < 60 ms.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->time_to_sleep);
 	}
-	if (check->time_to_eat <= 0)
+	if (check->time_to_eat <= 59)
 	{
-		printf("\e[91mError, the time to eat cannot be < 0.\n");
+		printf("\e[91mError, the time to eat cannot be < 60 ms.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->time_to_eat);
 	}
-	if (check->time_to_die <= 0)
+	if (check->time_to_die <= 59)
 	{
-		printf("\e[91mError, the time to die cannot be <= 0.\n");
+		printf("\e[91mError, the time to die cannot be < 60 ms.\n");
 		printf("\e[91mIt is currently \e[0m\e[41m%d\e[0m.\n", check->time_to_die);
 	}
 	if (check->nb_eat <= 0)

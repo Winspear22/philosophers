@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:51:11 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/07 17:15:05 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/08 07:16:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void		write_actions(t_rules *rules, int id, char *string);
 
 /*      FT_INIT_ALL     */
 t_rules		ft_init_all(t_rules *i, char **argv);
+int			ft_init_all_mutex(t_rules *philo);
 
 /*      FT_PHILOSOPHERS     */
 int			ft_philosophers(t_rules *rules);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:50:32 by adaloui           #+#    #+#             */
-/*   Updated: 2022/02/07 17:23:48 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/08 07:17:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ t_rules	ft_init_all(t_rules *i, char **argv)
 		i->philosophers[k].latest_meal = 0;
 		i->philosophers[k].rules = i;
 	}
-	k = ft_init_all_mutex(i);
-	if (k == 0)
-		printf("\e[91mEError, could not initiate mutexes.\e[0m\n");
+	ft_init_all_mutex(i);
 	return (*i);
 }
